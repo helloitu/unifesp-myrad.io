@@ -1,0 +1,570 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: MyRadio API's
+tags:
+  - name: Usuários
+paths:
+  /user:
+    post:
+      tags:
+        - Usuários
+      summary: Cria um novo usuário
+      description: Cria um novo usuário com base nos dados fornecidos.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: Dados do usuário a serem criados
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nome do usuário
+              email:
+                type: string
+                description: Endereço de e-mail do usuário
+              password:
+                type: string
+                description: Senha do usuário
+              age:
+                type: integer
+                description: Idade do usuário
+              gender:
+                type: string
+                description: Gênero do usuário
+              phone:
+                type: string
+                description: Número de telefone do usuário
+              adm:
+                type: boolean
+                description: Indica se o usuário é um administrador
+              dev:
+                type: boolean
+                description: Indica se o usuário é um desenvolvedor
+      responses:
+        200:
+          description: Sucesso
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Mensagem de sucesso
+              user:
+                type: object
+                description: Dados do usuário criado
+                properties:
+                  id:
+                    type: integer
+                    description: ID do usuário
+                  name:
+                    type: string
+                    description: Nome do usuário
+                  email:
+                    type: string
+                    description: Endereço de e-mail do usuário
+                  age:
+                    type: integer
+                    description: Idade do usuário
+                  gender:
+                    type: string
+                    description: Gênero do usuário
+                  phone:
+                    type: string
+                    description: Número de telefone do usuário
+                  adm:
+                    type: boolean
+                    description: Indica se o usuário é um administrador
+                  dev:
+                    type: boolean
+                    description: Indica se o usuário é um desenvolvedor
+        400:
+          description: Requisição inválida
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Mensagem de erro
+        500:
+          description: Erro interno do servidor
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Mensagem de erro
+    put:
+      tags:
+        - Usuários
+      summary: Atualiza um usuário existente pelo endereço de e-mail
+      description: Atualiza os dados de um usuário existente com base no endereço de e-mail fornecido.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: Dados do usuário a serem atualizados
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                description: Endereço de e-mail do usuário a ser atualizado
+              name:
+                type: string
+                description: Novo nome do usuário (opcional)
+              password:
+                type: string
+                description: Nova senha do usuário (opcional)
+              age:
+                type: integer
+                description: Nova idade do usuário (opcional)
+              gender:
+                type: string
+                description: Novo gênero do usuário (opcional)
+              phone:
+                type: string
+                description: Novo número de telefone do usuário (opcional)
+              adm:
+                type: boolean
+                description: Indica se o usuário é um administrador (opcional)
+              dev:
+                type: boolean
+                description: Indica se o usuário é um desenvolvedor (opcional)
+      responses:
+        200:
+          description: Sucesso
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Mensagem de sucesso
+              user:
+                type: object
+                description: Dados do usuário atualizado
+                properties:
+                  id:
+                    type: integer
+                    description: ID do usuário
+                  name:
+                    type: string
+                    description: Nome do usuário atualizado
+                  email:
+                    type: string
+                    description: Endereço de e-mail do usuário atualizado
+                  age:
+                    type: integer
+                    description: Idade do usuário atualizada
+                  gender:
+                    type: string
+                    description: Gênero do usuário atualizado
+                  phone:
+                    type: string
+                    description: Número de telefone do usuário atualizado
+                  adm:
+                    type: boolean
+                    description: Indica se o usuário é um administrador
+                  dev:
+                    type: boolean
+                    description: Indica se o usuário é um desenvolvedor
+        400:
+          description: Requisição inválida
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Mensagem de erro
+        500:
+          description: Erro interno do servidor
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Mensagem de erro
+    get:
+      tags:
+        - Usuários
+      summary: Busca um usuário pelo endereço de e-mail
+      description: Busca um usuário pelo endereço de e-mail fornecido.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: email
+          description: Endereço de e-mail do usuário a ser buscado
+          required: true
+          type: string
+      responses:
+        200:
+          description: Sucesso
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Mensagem de sucesso
+              user:
+                type: object
+                description: Dados do usuário encontrado
+                properties:
+                  id:
+                    type: integer
+                    description: ID do usuário
+                  name:
+                    type: string
+                    description: Nome do usuário
+                  email:
+                    type: string
+                    description: Endereço de e-mail do usuário
+                  age:
+                    type: integer
+                    description: Idade do usuário
+                  gender:
+                    type: string
+                    description: Gênero do usuário
+                  phone:
+                    type: string
+                    description: Número de telefone do usuário
+                  adm:
+                    type: boolean
+                    description: Indica se o usuário é um administrador
+                  dev:
+                    type: boolean
+                    description: Indica se o usuário é um desenvolvedor
+        400:
+          description: Requisição inválida
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Mensagem de erro
+        404:
+          description: Usuário não encontrado
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Mensagem de erro
+        500:
+          description: Erro interno do servidor
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Mensagem de erro
+  /musicas:
+    post:
+      tags:
+        - Músicas
+      summary: Cadastrar uma nova música
+      consumes:
+        - application/json
+      parameters:
+        - name: musica
+          in: body
+          description: Dados da música a ser cadastrada
+          required: true
+          schema:
+            $ref: "#/definitions/MusicaEntrada"
+      responses:
+        201:
+          description: Música cadastrada com sucesso
+          schema:
+            $ref: "#/definitions/Musica"
+    delete:
+      tags:
+        - Músicas
+      summary: Deletar uma música por ID
+      parameters:
+        - name: id
+          in: query
+          description: ID da música a ser deletada
+          required: true
+          type: integer
+      responses:
+        204:
+          description: Música deletada com sucesso
+          schema:
+            $ref: "#/definitions/Musica"
+    put:
+      tags:
+        - Músicas
+      summary: Atualizar uma música por ID
+      consumes:
+        - application/json
+      parameters:
+        - name: id
+          in: query
+          description: ID da música a ser atualizada
+          required: true
+          type: integer
+        - name: musica
+          in: body
+          description: Dados da música atualizada
+          required: true
+          schema:
+            $ref: "#/definitions/Musica"
+      responses:
+        200:
+          description: Música atualizada com sucesso
+          schema:
+            $ref: "#/definitions/Musica"
+  /musicas/por-genero:
+    get:
+      tags:
+        - Músicas
+      summary: Obter músicas por gênero
+      parameters:
+        - name: genero
+          in: query
+          description: Gênero da música
+          required: true
+          type: string
+      responses:
+        200:
+          description: Lista de músicas por gênero
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Musica"
+  /musicas/por-nome:
+    get:
+      tags:
+        - Músicas
+      summary: Obter músicas por nome
+      parameters:
+        - name: nome
+          in: query
+          description: Nome da música
+          required: true
+          type: string
+      responses:
+        200:
+          description: Lista de músicas por nome
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Musica"
+  /musicas/por-artista:
+    get:
+      tags:
+        - Músicas
+      summary: Obter músicas por artista
+      parameters:
+        - name: artista
+          in: query
+          description: Nome do artista
+          required: true
+          type: string
+      responses:
+        200:
+          description: Lista de músicas por artista
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Musica"
+              
+  /votacao/voto:
+    post:
+      tags:
+        - Votação
+      summary: Registrar um voto
+      parameters:
+        - name: id_usuario
+          in: query
+          description: ID do usuário que está votando
+          required: true
+          type: integer
+        - name: id_musica
+          in: query
+          description: ID da música que está sendo votada
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Voto registrado com sucesso
+          schema:
+            type: object
+            properties:
+              mensagem:
+                type: string
+                example: "Voto registrado com sucesso"
+    put:
+      tags:
+        - Votação
+      summary: Atualizar um voto
+      parameters:
+        - name: id_usuario
+          in: query
+          description: ID do usuário que está atualizando o voto
+          required: true
+          type: integer
+        - name: id_musica
+          in: query
+          description: ID da música que está sendo atualizada
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Voto atualizado com sucesso
+          schema:
+            type: object
+            properties:
+              mensagem:
+                type: string
+                example: "Voto atualizado com sucesso"
+
+  /votacao/votos-por-usuario:
+    get:
+      tags:
+        - Votação
+      summary: Obter votos de um usuário
+      parameters:
+        - name: id_usuario
+          in: query
+          description: ID do usuário
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Lista de músicas votadas pelo usuário e a quantidade de votos
+          schema:
+            type: object
+            properties:
+              votos:
+                type: array
+                items:
+                  $ref: "#/definitions/Musica"
+              quantidade_votos:
+                type: integer
+  /votacao/votos-por-musica:
+    get:
+      tags:
+        - Votação
+      summary: Obter quantidade de votos de uma música
+      parameters:
+        - name: id_musica
+          in: query
+          description: ID da música
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Quantidade de votos da música
+          schema:
+            type: object
+            properties:
+              quantidade_votos:
+                type: integer       
+          
+  /panorama/musicas-order:
+    get:
+      tags:
+        - Panorama
+      summary: Obter músicas em ordem de quantidade de votos
+      responses:
+        200:
+          description: Lista de músicas em ordem de quantidade de votos
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Musica"
+
+  /panorama/usuarios-quantidade:
+    get:
+      tags:
+        - Panorama
+      summary: Obter quantidade de usuários
+      responses:
+        200:
+          description: Quantidade de usuários
+          schema:
+            type: object
+            properties:
+              quantidade:
+                type: integer
+
+  /panorama/musicas-quantidade:
+    get:
+      tags:
+        - Panorama
+      summary: Obter quantidade de músicas
+      responses:
+        200:
+          description: Quantidade de músicas
+          schema:
+            type: object
+            properties:
+              quantidade:
+                type: integer
+
+  /panorama/generos:
+    get:
+      tags:
+        - Panorama
+      summary: Obter todos os gêneros de músicas
+      responses:
+        200:
+          description: Lista de todos os gêneros de músicas
+          schema:
+            type: array
+            items:
+              type: string
+
+  /panorama/artistas:
+    get:
+      tags:
+        - Panorama
+      summary: Obter todos os artistas
+      responses:
+        200:
+          description: Lista de todos os artistas
+          schema:
+            type: array
+            items:
+              type: string
+definitions:
+  Musica:
+    type: object
+    properties:
+      id:
+        type: integer
+      titulo:
+        type: string
+      genero:
+        type: string
+      artista:
+        type: string
+  MusicaEntrada:
+    type: object
+    properties:
+      id:
+        type: integer
+      titulo:
+        type: string
+      genero:
+        type: string
+      artista:
+        type: string
+      bytes:
+        type: string
+  
+
