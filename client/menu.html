@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt" class="app">
+<head>
+
+<script>
+function betamode (){
+
+		alert('Olá, MyRad.io esta em BETA, qualquer problema relatar ao desenvolvedor');
+    sleep(3000);
+		window.location.href = "menu.php?fbk=t";
+}
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
+
+
+
+
+function contato() {
+	alert("Para relatos de erros e indicações de musicas ,favor entrar em contato com o administrador");
+}
+
+</script>
+  <meta charset="utf-8" />
+	<meta name="theme-color" content="#41F4E1"/>
+  <title>MyRad.io | BETA</title>
+ <script type="text/javascript" language="javascript" src="tooltip.js"></script>
+ <link href="tooltip.css" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	  <link rel="stylesheet" href="js/jPlayer/jplayer.flat.css" type="text/css" />
+  <link rel="stylesheet" href="css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/ns-default.css" />
+<link rel="stylesheet" type="text/css" href="css/ns-style-attached.css" />
+<script src="js/modernizr.custom.js"></script>
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+  <![endif]-->
+</head>
+ <body  class="">
+
+  <section class="vbox">
+    <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+      <div class="navbar-header aside bg-info dk nav-xs">
+        <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+          <i class="icon-list"></i>
+        </a>
+        <a href="index.php" class="navbar-brand text-lt">
+          <i class="icon-earphones"></i>
+          <span class="hidden-nav-xs m-l-sm">MyRad.io&trade;<span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+						<span class="bar1 a1 bg-primary lter"></span>
+						<span class="bar2 a2 bg-info lt"></span>
+						<span class="bar3 a3 bg-success"></span>
+						<span class="bar4 a4 bg-warning dk"></span>
+						<span class="bar5 a5 bg-danger dker"></span>
+					</span></span>
+        </a>
+        <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+          <i class="icon-settings"></i>
+        </a>
+      </div>      <ul class="nav navbar-nav hidden-xs">
+        <li>
+          <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
+            <i class="fa fa-indent text"></i>
+            <i class="fa fa-dedent text-active"></i>
+          </a>
+        </li>
+      </ul>
+      <form action="busca.php" method="get" class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+<fieldset>
+			  <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+            </span>
+            <input type="text"  name="pesquisa" class="form-control input-sm no-border rounded" placeholder="Procurar Musicas ...">
+          </div>
+        </div>
+			</fieldset>
+      </form>
+      <div class="navbar-right ">
+        <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+							<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+		<img src="images/" alt="...">
+	</span>
+              Nome usuario <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu animated fadeInRight">
+							<li>
+								<span class="arrow top"></span>
+							<center>	Bem-Vindo(a) Usuario </center>
+							</li>
+
+              <li class="divider"></li>
+							<center>							Você tem <font color="red">3</font> Votos Disponiveis
+</center>
+<li class="divider"></li>
+<li>
+	<span class="arrow top"></span>
+	<center><a href="menu.php?act=logout">Encerrar Sessão</a></center>
+</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <section>
+      <section class="hbox stretch">
+        <!-- .aside -->
+        <aside class="bg-dark dk nav-xs aside hidden-print" id="nav">
+          <section class="vbox">
+            <section class="w-f-md scrollable">
+              <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+
+
+
+                <!-- nav -->
+                <nav class="nav-primary hidden-xs">
+                  <ul class="nav bg clearfix">
+                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                      <h5>Você tem <b>3</b> Votos Disponíveis</h5>
+											<hr>
+                    </li>
+                    <li>
+                      <a href="index.php">
+                        <i class="icon-home icon  "></i>
+                        <span class="font-bold active">Menu</span>
+                      </a>
+                    </li>
+										<li>
+											<a onclick="contato()">
+												<i class="icon-drawer icon"></i>
+												<span class="font-bold active">Contato</span>
+											</a>
+										</li>
+										<li>
+											<a href="artistas.php">
+												<i class="icon-users icon"></i>
+												<span class="font-bold active">Artistas</span>
+											</a>
+										</li>
+										<li>
+											 <a href="sobre.php">
+												 <i class="icon-info icon"></i>
+												 <span class="font-bold active">Sobre</span>
+											 </a>
+										</li>
+										<li>
+											<a href='admin.php'>
+												<i class='icon-home icon'></i>
+												<span class='font-bold active'><font color='red'>Admin</font></span>
+											</a>
+										</li>
+                    <li class="m-b hidden-nav-xs"></li>
+                  </ul>
+                </nav>
+                <!-- / nav -->
+              </div>
+            </section>
+          </section>
+        </aside>
+        <!-- /.aside -->
+        <section id="content">
+          <section class="vbox">
+            <section class="w-f-md" id="bjax-target">
+              <section class="hbox stretch">
+                <!-- menu generos -->
+                <aside class="aside bg-light dk" id="sidebar">
+                  <section class="vbox animated fadeInUp">
+                    <section class="scrollable hover">
+                      <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+
+												<a id='g2' href="menu.php?genero=666"  class='list-group-item active'>
+                          Rock
+                        </a>
+
+                        <!-- fim rock -->
+												<a id='g1' href="menu.php?genero=2573"  class='list-group-item'>
+                          POP
+                        </a>
+												<!--fim pop-->
+
+												<!-- inicio eletronica -->
+                        <a id='g2' href="menu.php?genero=2589"  class='list-group-item'>
+                          Eletronica
+                        </a>
+												<!--- fim eletronica -->
+
+												<!-- inicio funk -->
+												<a id='g2' href="menu.php?genero=13" class='list-group-item'>
+													Funk
+												</a>
+												<!-- fim funk -->
+
+												<!-- inicio reggae -->
+												<a id='g2' href="menu.php?genero=68" class='list-group-item'>
+													Reggae
+												</a>
+												<!-- fim reggae -->
+                      </div>
+
+				 <br>
+				 <br>
+
+									  </section>
+                  </section>
+	            </aside>
+                <section>
+									<section class="vbox">
+										<section class="scrollable padder-lg">
+																								 <div class='row row-sm'>
+                    <h2 class='font-thin m-b'>Eletro</h2>
+									 </div>
+
+									 </section>
+									 </section>
+                </section>
+								<aside class="aside-md bg-light dk" id="sidebar">
+		              <section class="vbox animated fadeInRight">
+		                <section class="w-f-md scrollable hover">
+		                  <h4 class="font-thin m-l-md m-t"><b><center>Rank Atual</center></b></h4>
+											<hr>
+		                  <ul class="list-group no-bg no-borders auto m-t-n-xxs">
+							<li class='list-group-item'>
+								<span class='pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm'>
+								  <img src='images/covers/ACDC.jpg' alt='...'>
+								</span>
+								<div class='clear'>
+								  <div><a href='computa_votos.php?id=$idM&nome=$nomeM'>Musica X - ACDC</a></div>
+								  <small class='text-muted'>Votos: <font color='blue'>100</font></small>
+								</div>
+							</li>
+						 </ul>
+		                </section>
+		              </section>
+		            </aside>
+              </section	>
+            </section>
+            <footer class="footer bg-info dker">
+<audio controls autoplay="autoplay"><source src="http://192.168.0.102:8000/mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+   </footer>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+  <script src="js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+	<script src="/dist/APlayer.min.js"></script>
+	<script src="player.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/app.js"></script>
+	<script src="js/notificationFx.js"></script>
+	<script type="text/javascript" src="js/jPlayer/jquery.jplayer.min.js"></script>
+	<script type="text/javascript" src="js/jPlayer/add-on/jplayer.playlist.min.js"></script>
+	<script type="text/javascript" src="js/jPlayer/demo.js"></script>
+  <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="js/app.plugin.js"></script>
+</body>
+</html>

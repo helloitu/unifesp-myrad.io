@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+#tt{
+	z-index: 99999999;
+	position:absolute;
+	margin-top: 5px;
+}
+#ttcont {
+	color:#fff;
+	background: #000 repeat left top;
+	opacity: 0.5;
+	padding:5px;
+	font:11px Verdana, Arial, Helvetica, sans-serif;
+	border-radius: 2px;
+	border:1px solid #333;
+	letter-spacing:0px; opacity:0.8;
+}
+#ttbot {
+ background:url('g.png') no-repeat left top;
+ height:15px;
+ width:auto;
+ margin-top:0px;
+ margin-left:2px;
+}
