@@ -22,7 +22,7 @@ img{max-width:100%;}
 /*--end reset--*/
 body {
     font-family: 'Open Sans', sans-serif;
-    background: url(../images/bg.png)repeat #8e44ad 0px 0px;
+    background: url(../images/bg.png)repeat #4cb6cb 0px 0px;
     background-attachment: fixed;
 }
 h1 {
@@ -55,7 +55,7 @@ h1 {
     margin: 0;
     width: 89.87%;
     border: none;
-    border-bottom: 2px dashed rgba(123, 58, 150, 0.36);
+    border-bottom: 2px dashed #4cb6cb;
     -webkit-appearance: none;
     margin-bottom: 2em;
 	font-family: 'Open Sans', sans-serif;
@@ -73,7 +73,7 @@ h1 {
     background: url(../images/l3.png) no-repeat 98% 67%;
 }
 .login-top input[type="number"]:hover, .login-top input[type="text"]:hover, ..login-top input[type="password"]:hover{
-    border-bottom-color:rgba(132, 141, 215, 0.52);
+    border-bottom-color:rgba(99, 215, 233, 0.52);
 }
 /*--checkbox--*/
 .login-top input[type="checkbox"] {
@@ -125,7 +125,7 @@ h1 {
     line-height: 2.4em;
 }
 .login-bottom a:hover{
-	color:#8e44ad;
+	color:#4cb6cb;
 	transition: 0.5s all ease;
 	-webkit-transition: 0.5s all ease;
 	-moz-transition: 0.5s all ease;
@@ -135,8 +135,8 @@ h1 {
 .login-bottom input[type="submit"] {
     font-size: 0.9em;
     color: #fff;
-    background: #8e44ad;
-    border: 3px solid #8e44ad;
+    background: #4cb6cb;
+    border: 3px solid #4cb6cb;
     outline: none;
     cursor: pointer;
     padding: 7px 20px;
@@ -145,8 +145,8 @@ h1 {
 }
 .login-bottom input[type="submit"]:hover{
 	background:#fff;
-	color:#8e44ad;
-	border-color:#8e44ad;
+	color:#4cb6cb;
+	border-color:#4cb6cb;
 	transition: 0.5s all ease;
 	-webkit-transition: 0.5s all ease;
 	-moz-transition: 0.5s all ease;
@@ -182,13 +182,13 @@ h1 {
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
     width: 50%;
-    background: #A472B9;
+    background: #4cb6cb;
     float: left;
     padding: 15px 0;
 }
 .resp-tab-active {
     text-shadow: none;
-    color: #8e44ad;
+    color: #4cb6cb;
     background:#fff ;
 }
 .resp-tabs-container {
