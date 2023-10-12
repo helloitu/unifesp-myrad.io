@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Artista;
+use App\Models\Musica;
 use Illuminate\Http\Request;
 
-class ArtistaController extends Controller
+class MusicaController extends Controller
 {
-    private Artista $artista;
-    public function __construct(Artista $artista){
-        $this->artista = $artista;
+    private $musica;
+    public function __construct(Musica $musica){
+        $this->musica = $musica;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return $this->artista->paginate(10);
+        return $this->musica->paginate(10);
     }
 
     /**
@@ -27,37 +27,38 @@ class ArtistaController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->artista->create($request->all());
+        return $this->musica->create($request->all());
     }
 
     /**
      * Display the specified resource.
-     *  @param Artista $artista
-     *  @return \Illuminate\Http\Response
+     * @param Musica $musica
+     * @return \Illuminate\Http\Response
      */
-    public function show(Artista $artista)
+    public function show(Musica $musica)
     {
-        return $artista->with('musicas')->first();
+        return $musica->with('artista')->first();
     }
 
     /**
      * Update the specified resource in storage.
      * @param \Illuminate\Http\Request $request
-     * @param  Artista $artista
+     * @param  Musica $musica
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Artista $artista)
+    public function update(Request $request, Musica $musica)
     {
-        $artista->update($request->all());
-        return $artista;
+        $musica->update($request->all());
+        return $musica;
     }
 
     /**
      * Remove the specified resource from storage.
-     * @param Artista $artista
+     * @param Musica $musica
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(Artista $artista)
+    public function destroy(Musica $musica)
     {
-        return $artista->delete();
+        return $musica->delete();
     }
 }

@@ -1,23 +1,23 @@
 <?php
 
+use App\Http\Controllers\Api\ServiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
+Route::controller(ServiceController::class)->group(function () {
+    //Lista configuração do MyRadio
+    Route::get('service', 'index');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    //Votacao
+    Route::get('service/abre_votacao', 'abre_votacao');
+    Route::get('service/fecha_votacao', 'fecha_votacao');
+
+    //Cadastros
+    Route::get('service/abre_cadastros', 'abre_cadastros');
+    Route::get('service/fecha_cadastros', 'fecha_cadastros');
 });
 
-Route::apiResource('usuarios', \App\Http\Controllers\Api\UserController::class);
-Route::apiResource('service', \App\Http\Controllers\Api\ServiceController::class);
+Route::apiResource('usuario', \App\Http\Controllers\Api\UsuarioController::class);
+
 Route::apiResource('artista', \App\Http\Controllers\Api\ArtistaController::class);
+Route::apiResource('artista.musica', \App\Http\Controllers\Api\MusicaController::class);
