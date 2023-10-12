@@ -8,50 +8,54 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+    //Injeção de dependencias
     private $config;
-    private function __construct(config $config){
+    public function __construct(config $config){
         $this->config = $config;
     }
+
     /**
-     * Display a listing of the resource.
+     * Retorna configuração atual
      */
     public function index()
     {
-        return $this->config->paginate(5);
-        //
+        return $this->config->first();
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Abre a votação no sistema
      */
-    public function store(Request $request)
-    {
-        //
+    public function abre_votacao(){
+        return $this->config::find('1')->update(['votacoes'=>true]);
     }
 
     /**
-     * Display the specified resource.
-     * @param config $config
-     * @return \Illuminate\Http\Response
+     * Fecha votação no sistema
      */
-    public function show(config $config)
-    {
-        return $config->paginate(5);
+    public function fecha_votacao(){
+        return $this->config::find('1')->update(['votacoes'=>false]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Abre os cadastros
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function abre_cadastros(){
+        return $this->config::find('1')->update(['cadastros'=>true]);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Fecha os cadastros
      */
-    public function destroy(string $id)
-    {
-        //
+    public function fecha_cadastros(){
+        return $this->config::find('1')->update(['cadastros'=>false]);
+    }
+
+    /**
+     * Gera playlist baseada nas X músicas mais votadas
+     *  e inicia IceS (Icecast).
+     */
+    public function inicia_stream(){
+        system("ices -c ices.conf");
+        return true;
     }
 }
