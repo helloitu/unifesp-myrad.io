@@ -21,6 +21,74 @@ function sleep(milliseconds) {
 
 
 
+function computa_voto(musica){
+  fetch(`http://127.0.0.1:8000/api/usuario/67/musica/${musica}`,
+  //Adicionar parametro bearer token no header abaixo
+  {method: 'GET', headers:{'Content-Type':'application/json'}})
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Erro na solicitação GET: " + response.status);
+      }
+      window.location.reload();
+      return response.json();
+
+    })
+    .then(data => {
+      // O objeto JSON está disponível aqui
+      alert('voto computado!')
+      window.location.reload()
+    })
+    .catch(error => {
+      console.error("Erro durante a solicitação GET:", error);
+    });
+}
+function popula_ranking(){
+  var ulRanking = document.querySelector("ul[name='ul_ranking']");
+  // buscando ranking
+  fetch('http://127.0.0.1:8000/api/service/ranking',
+  {method: 'GET', headers:{'Content-Type':'application/json'}})
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Erro na solicitação GET: " + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // O objeto JSON está disponível aqui
+      console.log("Objeto JSON recebido:", data);
+      data.forEach(musica => {
+        var liElement = document.createElement("li");
+        liElement.onclick = function(){
+          computa_voto(musica['id']);
+        };
+        liElement.className = "list-group-item";
+
+        // Cria o conteúdo do li
+        liElement.innerHTML = `
+            <span class='pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm'>
+                <img src='images/covers/ACDC.jpg' alt='...'>
+            </span>
+            <div onclick='computa_voto()' class='clear'>
+                <div>${musica['nome']} - ${musica['autor']}</div>
+                <small class='text-muted'>Votos: <font color='blue'>${musica['votos']}</font></small>
+            </div>
+        `;
+
+        // Insere o novo li na lista ul
+        ulRanking.appendChild(liElement);
+      });
+
+    })
+    .catch(error => {
+      console.error("Erro durante a solicitação GET:", error);
+    });
+
+  // Obtém a referência para o elemento ul
+
+
+  // Cria um novo elemento li
+
+}
 
 
 function contato() {
@@ -50,7 +118,7 @@ function contato() {
     <script src="js/ie/excanvas.js"></script>
   <![endif]-->
 </head>
- <body  class="">
+ <body onload="popula_ranking()" class="">
 
   <section class="vbox">
     <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
@@ -235,17 +303,8 @@ function contato() {
 		                <section class="w-f-md scrollable hover">
 		                  <h4 class="font-thin m-l-md m-t"><b><center>Rank Atual</center></b></h4>
 											<hr>
-		                  <ul class="list-group no-bg no-borders auto m-t-n-xxs">
-							<li class='list-group-item'>
-								<span class='pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm'>
-								  <img src='images/covers/ACDC.jpg' alt='...'>
-								</span>
-								<div class='clear'>
-								  <div><a href='computa_votos.php?id=$idM&nome=$nomeM'>Musica X - ACDC</a></div>
-								  <small class='text-muted'>Votos: <font color='blue'>100</font></small>
-								</div>
-							</li>
-						 </ul>
+		                  <ul name="ul_ranking" class="list-group no-bg no-borders auto m-t-n-xxs">
+                      </ul>
 		                </section>
 		              </section>
 		            </aside>

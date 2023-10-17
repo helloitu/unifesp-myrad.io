@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Musica;
+use App\Models\Artista;
 use Illuminate\Http\Request;
 
 class MusicaController extends Controller
@@ -14,10 +15,11 @@ class MusicaController extends Controller
     }
     /**
      * Display a listing of the resource.
+     * @param Artista $artista
      */
-    public function index()
+    public function index(Artista $artista)
     {
-        return $this->musica->paginate(10);
+        return $artista->musicas()->paginate(10);
     }
 
     /**
@@ -32,12 +34,13 @@ class MusicaController extends Controller
 
     /**
      * Display the specified resource.
+     * @param Artista $artista
      * @param Musica $musica
      * @return \Illuminate\Http\Response
      */
-    public function show(Musica $musica)
+    public function show(Artista $artista, Musica $musica)
     {
-        return $musica->with('artista')->first();
+        return $musica;
     }
 
     /**

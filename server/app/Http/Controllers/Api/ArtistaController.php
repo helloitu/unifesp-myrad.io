@@ -37,7 +37,7 @@ class ArtistaController extends Controller
      */
     public function show(Artista $artista)
     {
-        return $artista->with('musicas')->first();
+        return $artista;
     }
 
     /**

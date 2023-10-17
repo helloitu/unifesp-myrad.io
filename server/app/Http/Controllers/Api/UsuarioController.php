@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Usuario;
+use App\Models\Musica;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
     private Usuario $usuario;
-    public function __construct(Usuario $usuario) {
+    private Musica $musica;
+    public function __construct(Usuario $usuario, Musica $musica) {
         $this->usuario = $usuario;
+        $this->musica = $musica;
     }
     /**
      * Retorna usuários paginando de 10 em 10 registros
@@ -37,7 +40,7 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        return $usuario->first();
+        return $usuario;
     }
 
     /**
@@ -53,6 +56,18 @@ class UsuarioController extends Controller
     }
 
     /**
+     * Vota em música
+     * @param Musica $musica
+     * @param Usuario $usuario
+     * @return \Illuminate\Http\Response
+     */
+    public function vota(Usuario $usuario, Musica $musica){
+        if ($usuario->decrement('votos',1) && $musica->increment('votos',1)){
+            dd(true);
+        }
+        dd(false);
+    }
+    /**
      * Remove usuário
      * @param Usuario $usuario
      * @return \Illuminate\Http\Response
@@ -61,4 +76,6 @@ class UsuarioController extends Controller
     {
         return $usuario->delete();
     }
+
+
 }

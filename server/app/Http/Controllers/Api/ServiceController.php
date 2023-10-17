@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\config;
+use App\Models\Musica;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
     //Injeção de dependencias
     private $config;
-    public function __construct(config $config){
+    private $musica;
+    public function __construct(config $config, Musica $musica){
         $this->config = $config;
+        $this->musica = $musica;
     }
 
     /**
@@ -26,28 +29,28 @@ class ServiceController extends Controller
      * Abre a votação no sistema
      */
     public function abre_votacao(){
-        return $this->config::find('1')->update(['votacoes'=>true]);
+        return $this->config->find('1')->update(['votacoes'=>true]);
     }
 
     /**
      * Fecha votação no sistema
      */
     public function fecha_votacao(){
-        return $this->config::find('1')->update(['votacoes'=>false]);
+        return $this->config->find('1')->update(['votacoes'=>false]);
     }
 
     /**
      * Abre os cadastros
      */
     public function abre_cadastros(){
-        return $this->config::find('1')->update(['cadastros'=>true]);
+        return $this->config->find('1')->update(['cadastros'=>true]);
     }
 
     /**
      * Fecha os cadastros
      */
     public function fecha_cadastros(){
-        return $this->config::find('1')->update(['cadastros'=>false]);
+        return $this->config->find('1')->update(['cadastros'=>false]);
     }
 
     /**
@@ -58,4 +61,12 @@ class ServiceController extends Controller
         system("ices -c ices.conf");
         return true;
     }
+
+    /**
+     * Retorna Ranking atual de músicas.
+     */
+    public function gera_ranking(){
+        return $this->musica->orderBy('votos', 'DESC')->take(10)->get();
+    }
+
 }
