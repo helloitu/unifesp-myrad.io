@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  db:
+    platform: linux/arm64
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123321"
+      MYSQL_DATABASE: "myradio"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "123321"
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - my-raddio
+    ports:
+      - 3306:3306
+
+  main:
+    container_name: servidor-myradio
+    restart: on-failure
+    env_file: .env
+    depends_on:
+      - db
+    links:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    networks:
+      - my-raddio
+    ports:
+      - 8000:8000
+    expose:
+      - 8000
+
+networks:
+  my-raddio:
+    driver: bridge
+
+volumes:
+  db:
+    driver: local

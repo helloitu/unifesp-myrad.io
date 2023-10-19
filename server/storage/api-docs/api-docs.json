@@ -1,0 +1,43 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "MyRadio BackEnd",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/usuario/login": {
+            "post": {
+                "summary": "Authenticate user and generate JWT token",
+                "operationId": "9a846882ebe69ac32fc7b854a24b8f05",
+                "parameters": [
+                    {
+                        "name": "numero",
+                        "in": "query",
+                        "description": "numero do usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "senha",
+                        "in": "query",
+                        "description": "senha",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "concedido"
+                    },
+                    "401": {
+                        "description": "erro"
+                    }
+                }
+            }
+        }
+    }
+}

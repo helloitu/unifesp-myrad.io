@@ -23,6 +23,26 @@ class MusicaController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     * @param string $genero
+     * @return \Illuminate\Http\Response
+     */
+    public function lista_genero(string $genero){
+        return $this->musica->where('genero', '=', $genero)->get();
+    }
+    /**
+     * @return \Illuminate\Http\Response
+     */
+    public function generos(){
+        $generos_totais = array();
+        $result = $this->musica->distinct('genero')->get('genero');
+        foreach($result as &$value){
+            $generos_totais[$value['genero']] = $this->lista_genero($value['genero']);
+        }
+        return $generos_totais;
+    }
+
+    /**
      * Store a newly created resource in storage.
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response

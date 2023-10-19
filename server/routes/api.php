@@ -25,12 +25,14 @@ Route::controller(ServiceController::class)->group(function () {
 Route::apiResource('usuario', \App\Http\Controllers\Api\UsuarioController::class);
 Route::controller(UsuarioController::class)->group(function () {
     Route::get('usuario/{usuario}/musica/{musica}','vota');
+    Route::post('usuario/login','login');
 });
 
 Route::apiResource('artista', \App\Http\Controllers\Api\ArtistaController::class);
 Route::controller(MusicaController::class)->group(function () {
     Route::get('artista/{artista}/musica/','index');
+    Route::get('musica/genero/{genero}', 'lista_genero');
+    Route::get('musica/genero/', 'generos');
     Route::get('artista/{artista}/musica/{musica}', 'show');
 });
-
 Route::apiResource('artista.musica', \App\Http\Controllers\Api\MusicaController::class);

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class MusicaFactory extends Factory
 {
+    private $generos = array('POP', 'ROCK', 'ELETRO', 'FUNK', 'REGGAE');
     /**
      * Define the model's default state.
      *
@@ -19,7 +20,7 @@ class MusicaFactory extends Factory
         return [
             'nome' => $this->faker->words(3,true),
             'autor' => $this->faker->words(4,true),
-            'genero' => $this->faker->words(4,true),
+            'genero' => $this->generos[array_rand($this->generos)],
             'path' => $this->faker->words(3,true),
             'duracao' => $this->faker->time(),
             'img' => $this->faker->words(5,true),

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class ArtistaController extends Controller
 {
+
     private Artista $artista;
     public function __construct(Artista $artista){
         $this->artista = $artista;

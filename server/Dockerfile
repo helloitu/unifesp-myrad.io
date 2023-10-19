@@ -1,4 +1,4 @@
-FROM php:8.1-fpm-alpine
+FROM php:8.2-fpm-alpine
 
 RUN apk update && \
     apk upgrade && \
@@ -8,6 +8,7 @@ RUN apk update && \
         libxslt-dev \
         libxml2-dev \
         libogg-dev \
+        linux-headers\
         libvorbis-dev \
         libtheora-dev \
         speex-dev \
@@ -48,3 +49,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 RUN composer install
+COPY ./run.sh /tmp
+RUN chmod +x /tmp/run.sh
+ENTRYPOINT ["/tmp/run.sh"]
